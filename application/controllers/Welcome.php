@@ -11,12 +11,12 @@ class Welcome extends CI_Controller
 
 	function login()
 	{
-		die('login');
+		$this->load->view('login');
 	}
 
 	function register()
 	{
-		die('register');
+		$this->load->view('register');
 	}
 
 	function pilihan_pasar()
