@@ -418,17 +418,24 @@
         <div class="fadeIn first">
             <!-- <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> -->
             <h4>Create An Account</h4>
+            <?= $this->session->flashdata('message'); ?>
         </div>
 
         <!-- Register Form -->
-        <form>
-            <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username">
-            <input type="email" id="email" class="fadeIn third" name="email" placeholder="Email">
-            <input type="text" id="address" class="fadeIn third" name="address" placeholder="Address">
-            <input type="number" id="phone" class="fadeIn third" name="phone" placeholder="Phone Number">
-            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
-            <input type="password" id="password1" class="fadeIn third" name="password1" placeholder="Re-enter Password">
-            <input type="submit" class="fadeIn fourth" value="Register">
+        <?= form_open('welcome/register') ?>
+        <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username">
+        <small class="text-danger"> <?= form_error('username'); ?> </small>
+        <input type="email" id="email" class="fadeIn third" name="email" placeholder="Email">
+        <small class="text-danger"> <?= form_error('email'); ?> </small>
+        <input type="text" id="address" class="fadeIn third" name="address" placeholder="Address">
+        <small class="text-danger"> <?= form_error('address'); ?> </small>
+        <input type="number" id="phone" class="fadeIn third" name="phone" placeholder="Phone Number">
+        <small class="text-danger"> <?= form_error('phone'); ?> </small>
+        <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+        <small class="text-danger"> <?= form_error('password'); ?> </small>
+        <input type="password" id="password1" class="fadeIn third" name="password1" placeholder="Re-enter Password">
+        <small class="text-danger"> <?= form_error('password1'); ?> </small>
+        <input type="submit" class="fadeIn fourth" value="Register">
         </form>
 
         <!-- Remind Passowrd -->

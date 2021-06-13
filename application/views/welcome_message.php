@@ -43,9 +43,9 @@
 				</li>
 			</ul>
 			<div class="d-flex">
-				<button type="button" class="btn btn-outline-success" style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#registerModal">
+				<a href="<?= base_url('welcome/register') ?>" class="btn btn-outline-success" style="margin-right: 10px;">
 					Register
-				</button>
+				</a>
 				<a href="<?= base_url('welcome/login'); ?>" class="btn btn-outline-success">
 					Login
 				</a>

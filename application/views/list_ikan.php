@@ -36,6 +36,46 @@
     </head>
 </head>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="<?= base_url('Welcome') ?>">
+            <b>
+                <font face="Courier New" color="green">HealthyFood</font>
+            </b>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('menu/sayuran') ?>">Sayuran-Sayuran</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('menu/buah') ?>">Buah-Buahan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('menu/daging') ?>">Daging Segar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="<?= base_url('menu/ikan') ?>">Ikan Segar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('menu/jajanan') ?>">Jajanan Pasar</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <a href="<?= base_url('welcome/register') ?>" class="btn btn-outline-success" style="margin-right: 10px;">
+                    Register
+                </a>
+                <a href="<?= base_url('welcome/login'); ?>" class="btn btn-outline-success">
+                    Login
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
 <body style="background-color: aqua;">
     <div class="row">
         <div class="col">
