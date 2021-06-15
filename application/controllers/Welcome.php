@@ -38,7 +38,8 @@ class Welcome extends CI_Controller
 						'address' => $user->address,
 						'phone' => $user->phone,
 					];
-					var_dump($data);
+					$this->session->set_userdata($data);
+					redirect('welcome');
 				} else {
 					$this->session->set_flashdata('message', '
 					<small class="text-danger"> Wrong Password ! </small>
@@ -81,5 +82,17 @@ class Welcome extends CI_Controller
 	function pilihan_pasar()
 	{
 		$this->load->view('pilihan_pasar');
+	}
+
+	public function logout()
+	{
+		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('phone');
+
+		$this->session->set_flashdata('message', '
+		<small class="text-success"> Logout Success! </small>
+		');
+		redirect('welcome/login');
 	}
 }

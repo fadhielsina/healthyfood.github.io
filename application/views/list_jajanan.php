@@ -103,12 +103,12 @@
                 $i = 1;
                 foreach ($data_sayur as $sayur) : ?>
                     <tr>
-                        <th scope="row"><img style="width: 160px;height: 110px;" src="<?= base_url('assets/img/') ?><?= $sayur['img'] ?>" class="img-thumbnail" alt="..."> <?= $sayur['nama'] ?></th>
+                        <th scope="row"><img style="width: 160px;height: 110px;" src="<?= base_url('assets/img/') ?><?= $sayur['img'] ?>.jpg" class="img-thumbnail" alt="..."> <?= $sayur['nama'] ?></th>
                         <td style="padding-top: 50px;">
                             <input type="hidden" name="harga_sayur[]" value="<?= $sayur['harga'] ?>">
                             <h4><?= number_format($sayur['harga']) ?>/Pcs</h4>
                         </td>
-                        <td style="padding-top: 45px;"><input type="number" min="0" name="sayur[]" /></td>
+                        <td style="padding-top: 45px;"><input type="number" value="0" min="0" name="sayur[]" /></td>
                         <td><input type="text" style="margin-top: 33px; width: 176px; font-weight:bold; font-size: 1.2rem;" class="form-control text-center" disabled name="total[]"></td>
                     </tr>
                 <?php $i++;
