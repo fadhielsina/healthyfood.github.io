@@ -423,7 +423,7 @@
 
         <!-- Login Form -->
         <?= form_open('welcome/login') ?>
-        <input type="number" id="phone" class="fadeIn second" name="phone" placeholder="Usrname or Phone Number">
+        <input type="number" id="phone" class="fadeIn second" name="phone" placeholder="Phone Number">
         <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
         <input type="submit" class="fadeIn fourth" value="Log In">
         </form>

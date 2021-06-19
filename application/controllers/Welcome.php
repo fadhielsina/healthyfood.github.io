@@ -3,17 +3,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Welcome extends CI_Controller
 {
-
 	public function __construct()
 	{
-
 		parent::__construct();
 		$this->load->library('form_validation');
 	}
 
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$login_act = 0;
+		if ($this->session->userdata('email')) {
+			$login_act = 1;
+		}
+		$data['login_act'] = $login_act;
+		$data['page'] = 'home';
+		$this->load->view('welcome_message', $data);
 	}
 
 	function login()
@@ -81,7 +85,14 @@ class Welcome extends CI_Controller
 
 	function pilihan_pasar()
 	{
-		$this->load->view('pilihan_pasar');
+		$login_act = 0;
+		if ($this->session->userdata('email')) {
+			$login_act = 1;
+		}
+		$data['login_act'] = $login_act;
+		$data['page'] = 'pilihan pasar';
+		$data['list_pasar'] = $this->db->get('master_pasar')->result_array();
+		$this->load->view('pilihan_pasar', $data);
 	}
 
 	public function logout()

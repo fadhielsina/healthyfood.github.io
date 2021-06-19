@@ -31,63 +31,30 @@
     </style>
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="<?= base_url('Welcome') ?>">
-            <b>
-                <font face="Courier New" color="green">HealthyFood</font>
-            </b>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('menu/sayuran') ?>">Sayuran-Sayuran</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('menu/buah') ?>">Buah-Buahan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('menu/daging') ?>">Daging Segar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="<?= base_url('menu/ikan') ?>">Ikan Segar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('menu/jajanan') ?>">Jajanan Pasar</a>
-                </li>
-            </ul>
-            <div class="d-flex">
-                <a href="<?= base_url('welcome/register') ?>" class="btn btn-outline-success" style="margin-right: 10px;">
-                    Register
-                </a>
-                <a href="<?= base_url('welcome/login'); ?>" class="btn btn-outline-success">
-                    Login
-                </a>
-            </div>
-        </div>
-    </div>
-</nav>
+<?php $this->load->view('navbar', $page); ?>
 
-<body style="background-color: aqua;">
+<body class="bg-light">
     <div class="text-center">
         <div class="d-grid gap-2">
             <a href="#" style="background-color: white;" class="btn btn-light" type="button">PILIHAN PASAR</a>
         </div>
     </div>
-    <div class="list-group">
-        <a href="#" style="background-color: aqua;" class="list-group-item list-group-item-action">Pasar Plasari, Jalan Palasari, Malabar, Kota Bandung</a>
-        <a href="#" style="background-color: aqua;" class="list-group-item list-group-item-action">Pasar Cihapit dan Cikaso, Jalan Cihapit, Bandung Wetan</a>
-        <a href="#" style="background-color: aqua;" class="list-group-item list-group-item-action">Pasar Cijerah, Jalan Melong, Cijerah</a>
-        <a href="#" style="background-color: aqua;" class="list-group-item list-group-item-action">Pasar Cicaheum, Jalan Antapani Lama</a>
-        <a href="#" style="background-color: aqua;" class="list-group-item list-group-item-action">Pasar Sarijadi, Jalan Sarijadi</a>
-        <a href="#" style="background-color: aqua;" class="list-group-item list-group-item-action">Pasar Sederhana, Jalan Jurang</a>
-        <a href="#" style="background-color: aqua;" class="list-group-item list-group-item-action">Pasar Astana Anyar, Jalan Astana Anyar</a>
-        <a href="#" style="background-color: aqua;" class="list-group-item list-group-item-action">Pasar Ujung Berung, Jalan Ujung Berung</a>
-        <a href="#" style="background-color: aqua;" class="list-group-item list-group-item-action">Pasar Kosambi, Jalan Jendral Ahmad Yani</a>
-        <a href="#" style="background-color: aqua;" class="list-group-item list-group-item-action">Pasar Sederhana . PD - Kota Bandung</a>
+    <div class="container" style="margin-top: 10px;">
+        <div class="row">
+            <?php foreach ($list_pasar as $pasar) : ?>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" style="width: 286px; height:180px;" src="<?= base_url('assets/img/') ?><?= $pasar['img'] ?>.jpg" alt="Card image cap">
+                        <div class="card-body text-center">
+                            <a href="<?= $pasar['id'] ?>">
+                                <h5 class="card-title"><?= $pasar['nama_pasar'] ?></h5>
+                            </a>
+                            <p class="card-text"><?= $pasar['alamat'] ?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 </body>
 
