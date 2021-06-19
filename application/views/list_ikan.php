@@ -56,7 +56,9 @@ if ($login_act == 0) {
             <h4 style="margin-left: -450px;" id="total"></h4>
         </div>
         <div class="col">
-            <a href=""><i class="fa fa-shopping-cart fa-lg"></i></a>
+            <?php if ($login_act == 1) : ?>
+                <button type="submit" class="btn btn-outline-secondary btn-sm">Tambah Ke Keranjang</button>
+            <?php endif; ?>
         </div>
     </div>
     <div class="">
