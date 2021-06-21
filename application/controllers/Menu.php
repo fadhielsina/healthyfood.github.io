@@ -12,7 +12,7 @@ class Menu extends CI_Controller
         }
         $data['login_act'] = $login_act;
         $data['page'] = 'sayuran';
-        $data['data_sayur'] = $this->db->get('master_sayuran')->result_array();
+        $data['data_sayur'] = $this->db->get_where('master_menu', ['kategori' => 'sayur'])->result_array();
         $this->load->view('list_sayuran', $data);
     }
 
@@ -24,7 +24,7 @@ class Menu extends CI_Controller
         }
         $data['login_act'] = $login_act;
         $data['page'] = 'buah';
-        $data['data_sayur'] = $this->db->get('master_buah')->result_array();
+        $data['data_sayur'] = $this->db->get_where('master_menu', ['kategori' => 'buah'])->result_array();
         $this->load->view('list_buah', $data);
     }
 
@@ -36,7 +36,7 @@ class Menu extends CI_Controller
         }
         $data['login_act'] = $login_act;
         $data['page'] = 'daging';
-        $data['data_sayur'] = $this->db->get('master_daging')->result_array();
+        $data['data_sayur'] = $this->db->get_where('master_menu', ['kategori' => 'daging'])->result_array();
         $this->load->view('list_daging', $data);
     }
 
@@ -48,7 +48,7 @@ class Menu extends CI_Controller
         }
         $data['login_act'] = $login_act;
         $data['page'] = 'ikan';
-        $data['data_sayur'] = $this->db->get('master_ikan')->result_array();
+        $data['data_sayur'] = $this->db->get_where('master_menu', ['kategori' => 'ikan'])->result_array();
         $this->load->view('list_ikan', $data);
     }
 
@@ -60,7 +60,7 @@ class Menu extends CI_Controller
         }
         $data['login_act'] = $login_act;
         $data['page'] = 'jajanan';
-        $data['data_sayur'] = $this->db->get('master_jajanan')->result_array();
+        $data['data_sayur'] = $this->db->get_where('master_menu', ['kategori' => 'jajanan'])->result_array();
         $this->load->view('list_jajanan', $data);
     }
 
@@ -69,10 +69,26 @@ class Menu extends CI_Controller
         $login_act = 0;
         if ($this->session->userdata('email')) {
             $login_act = 1;
+        } else {
+            redirect('welcome/login');
         }
         $data['login_act'] = $login_act;
         $data['page'] = 'keranjang';
-        $data['data_sayur'] = $this->db->get('master_jajanan')->result_array();
+        $data['data_sayur'] = $this->db->get_where('master_menu', ['kategori' => 'sayur'])->result_array();
         $this->load->view('keranjang', $data);
+    }
+
+    public function checkout()
+    {
+        $login_act = 0;
+        if ($this->session->userdata('email')) {
+            $login_act = 1;
+        } else {
+            redirect('welcome/login');
+        }
+        $data['login_act'] = $login_act;
+        $data['page'] = 'checkout';
+        $data['data_sayur'] = $this->db->get_where('master_menu', ['kategori' => 'sayur'])->result_array();
+        $this->load->view('checkout', $data);
     }
 }

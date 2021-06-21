@@ -67,7 +67,7 @@ if ($login_act == 0) {
                 <tr>
                     <th scope="col">Produk</th>
                     <th scope="col">Harga Satuan</th>
-                    <th scope="col">Kuantitas / Kg</th>
+                    <th scope="col">Kuantitas / Pcs</th>
                     <th scope="col">Total Harga</th>
                 </tr>
             </thead>

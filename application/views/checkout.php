@@ -45,31 +45,30 @@ if ($login_act == 0) {
 ?>
 
 <body class="bg-light">
-    <div class="row text-center">
-        <div class="col">
-            <h4 style="margin-left: 10px;">Keranjang Belanja </h4>
-        </div>
-        <div class="col">
-            <h4>Total :</h4>
-        </div>
-        <div class="col">
-            <h4 style="margin-left: -450px;" id="total"></h4>
-        </div>
-        <div class="col">
-            <?php if ($login_act == 1) : ?>
-                <a href="<?= base_url('menu/checkout') ?>" class="btn btn-warning btn-sm">Checkout</a>
-                <!-- <button type="submit" class="btn btn-warning btn-sm">Checkout</button> -->
-            <?php endif; ?>
+    <div class="container">
+        <div class="text-center">
+            <h4>Chcekout</h4>
         </div>
     </div>
-    <div class="">
+    <div class="container">
+        <h5><i class="fa fa-map-marker"> Alamat Pengiriman</i></h5>
+        <span><?= strtoupper($this->session->userdata('username')) ?> <b>|</b> <?= $this->session->userdata('phone') ?></span>
+        <br>
+        <span><?= $this->session->userdata('address') ?></span>
+    </div>
+    <hr>
+    <div class="container">
+        <i class="fa fa-shopping-bag fa-lg"> Pasar Sarijadi , Jalan Sarijadi</i>
+    </div>
+    <hr>
+    <div class="container">
         <table class="table">
             <thead style="background-color: white;">
                 <tr>
-                    <th scope="col">Produk</th>
+                    <th scope="col">Produk Dipesan</th>
                     <th scope="col">Harga Satuan</th>
-                    <th scope="col">Kuantitas</th>
-                    <th scope="col">Total Harga</th>
+                    <th scope="col">Jumlah</th>
+                    <th scope="col">Subtotal Produk</th>
                 </tr>
             </thead>
             <tbody>
@@ -90,6 +89,67 @@ if ($login_act == 0) {
             </tbody>
         </table>
     </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4>Total Pemesanan Produk :</h4>
+            </div>
+            <div class="col" style="margin-right: 120px;">
+                <h4 style="text-align:right;">Rp. 200.000</h4>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <i class="fa fa-shipping-fast fa-lg"> Opsi Pengiriman :</i>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <span>Grab Express Instant</span>
+            </div>
+            <div class="col" style="margin-right: 120px;">
+                <h5 style="text-align:right;">Rp. 20.000</h5>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <i class="fa fa-credit-card fa-lg"> Metode Pembayaran :</i>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <label class="form-check-label">Bank Mandiri</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label">Bank BCA</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label">Bank BNI</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label">Bank BRI</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container" style="text-align:right;">
+        <h4 style="margin-right:110px;">Total Pembayaran : Rp. 220.000</h4>
+        <br>
+        <button class="btn btn-warning" style="margin-right:110px;">Buat Pemesanan</button>
+    </div>
+    <footer style="margin-top: 50px;">
+    </footer>
 </body>
 
 <script>
