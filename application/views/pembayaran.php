@@ -49,7 +49,7 @@
                 <h3>Total Pembyaran</h3>
             </div>
             <div class="col">
-                <h3 style="text-align: right; margin-right:100px;">Rp. 220.000</h3>
+                <h3 style="text-align: right; margin-right:100px;">Rp. <?= number_format($total->subtotal + 20000) ?></h3>
             </div>
         </div>
     </div>

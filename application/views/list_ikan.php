@@ -57,6 +57,7 @@ if ($login_act == 0) {
         </div>
         <div class="col">
             <?php if ($login_act == 1) : ?>
+                <?= form_open('menu/tambah_keranjang'); ?>
                 <button type="submit" class="btn btn-outline-secondary btn-sm">Tambah Ke Keranjang</button>
             <?php endif; ?>
         </div>
@@ -78,16 +79,18 @@ if ($login_act == 0) {
                     <tr>
                         <th scope="row"><img style="width: 160px;height: 110px;" src="<?= base_url('assets/img/') ?><?= $sayur['img'] ?>.jpg" class="img-thumbnail" alt="..."> <?= $sayur['nama'] ?></th>
                         <td style="padding-top: 50px;">
+                            <input type="hidden" name="id_sayur[]" value="<?= $sayur['id'] ?>">
                             <input type="hidden" name="harga_sayur[]" value="<?= $sayur['harga'] ?>">
                             <h4><?= number_format($sayur['harga']) ?>/Kg</h4>
                         </td>
                         <td style="padding-top: 45px;"><input type="number" value="0" min="0" name="sayur[]" <?= $disabled ?> /></td>
-                        <td><input type="text" value="0" style="margin-top: 33px; width: 176px; font-weight:bold; font-size: 1.2rem;" class="form-control text-center" disabled name="total[]"></td>
+                        <td><input type="text" name="subtotal[]" value="0" style="margin-top: 33px; width: 176px; font-weight:bold; font-size: 1.2rem;" class="form-control text-center" disabled></td>
                     </tr>
                 <?php $i++;
                 endforeach; ?>
             </tbody>
         </table>
+        <?= form_close(); ?>
     </div>
 </body>
 
@@ -98,7 +101,7 @@ if ($login_act == 0) {
         var hasil = 0;
         for (var i = 0; i < $sayur.length; i++) {
             var $total = $sayur[i].value * $harga[i].value;
-            document.getElementsByName('total[]')[i].value = $total;
+            document.getElementsByName('subtotal[]')[i].value = $total;
             hasil += $total;
             document.getElementById('total').innerText = `Rp. ${hasil}`;
         }
