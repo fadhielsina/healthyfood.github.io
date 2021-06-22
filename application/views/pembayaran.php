@@ -36,62 +36,39 @@
     </head>
 </head>
 
-<?php $this->load->view('navbar', $page) ?>
-<?php
-$disabled = '';
-if ($login_act == 0) {
-    $disabled = 'disabled';
-}
-?>
-
 <body class="bg-light">
+    <div class="container" style="margin-top: 50px;">
+        <div class="text-center">
+            <h4>Pembayaran</h4>
+        </div>
+    </div>
+    <hr>
     <div class="container">
-        <div class="row text-center">
+        <div class="row">
             <div class="col">
-                <h4 style="margin-left: 10px;"><i class="fa fa-shopping-cart"></i> Keranjang Belanja </h4>
+                <h3>Total Pembyaran</h3>
             </div>
             <div class="col">
-                <h4>Total :</h4>
-            </div>
-            <div class="col">
-                <h4 style="margin-left: -350px;" id="total"></h4>
-            </div>
-            <div class="col">
-                <?php if ($login_act == 1) : ?>
-                    <a href="<?= base_url('menu/checkout') ?>" class="btn btn-warning btn-sm">Checkout</a>
-                    <!-- <button type="submit" class="btn btn-warning btn-sm">Checkout</button> -->
-                <?php endif; ?>
+                <h3 style="text-align: right; margin-right:100px;">Rp. 220.000</h3>
             </div>
         </div>
     </div>
+    <hr>
     <div class="container">
-        <table class="table">
-            <thead style="background-color: white;">
-                <tr>
-                    <th scope="col">Produk</th>
-                    <th scope="col">Harga Satuan</th>
-                    <th scope="col">Kuantitas</th>
-                    <th scope="col">Total Harga</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $i = 1;
-                foreach ($data_sayur as $sayur) : ?>
-                    <tr>
-                        <th scope="row"><img style="width: 160px;height: 110px;" src="<?= base_url('assets/img/') ?><?= $sayur['img'] ?>.jpg" class="img-thumbnail" alt="..."> <?= $sayur['nama'] ?></th>
-                        <td style="padding-top: 50px;">
-                            <input type="hidden" name="harga_sayur[]" value="<?= $sayur['harga'] ?>">
-                            <h4><?= number_format($sayur['harga']) ?>/Kg</h4>
-                        </td>
-                        <td style="padding-top: 45px;"><input type="number" value="0" min="0" name="sayur[]" <?= $disabled ?> /></td>
-                        <td><input type="text" value="0" style="margin-top: 33px; width: 176px; font-weight:bold; font-size: 1.2rem;" class="form-control text-center" disabled name="total[]"></td>
-                    </tr>
-                <?php $i++;
-                endforeach; ?>
-            </tbody>
-        </table>
+        <span style="font-size: 1.5rem; margin-left:200px;">Bank BNI</span><br>
+        <span style="font-size: 1.5rem; margin-left:200px;">No Rekening :</span>
+        <h2 class="text-center" style="color:red;">126 081351 278197</h2>
+        <span style="font-size: 1.5rem; margin-left:200px;">Petunjuk Transfer ATM :</span> <br>
+        <span> <i class="fa fa-chevron-circle-down" style="margin-left: 200px; margin-top:10px;"></i> Pilih Transaksi Lainnya > Transfer > Ke Rek BCA Virtual Account.</span><br><br>
+        <span> <i class="fa fa-chevron-circle-down" style="margin-left: 200px; margin-top:10px;"></i> Masukkan nomor Virtual Account <b><i>126 081351278197</i></b> dan pilih Benar.</span><br><br>
+        <span> <i class="fa fa-chevron-circle-down" style="margin-left: 200px; margin-top:10px;"></i> Periksa informasi yang tertera di layar.</span>
+        <br><br>
+        <div class="text-center">
+            <button class="btn btn-warning btn-lg">Selesai</button>
+        </div>
     </div>
+    <footer style="margin-top: 50px;">
+    </footer>
 </body>
 
 <script>

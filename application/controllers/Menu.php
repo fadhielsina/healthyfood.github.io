@@ -91,4 +91,17 @@ class Menu extends CI_Controller
         $data['data_sayur'] = $this->db->get_where('master_menu', ['kategori' => 'sayur'])->result_array();
         $this->load->view('checkout', $data);
     }
+
+    public function pembayaran()
+    {
+        $login_act = 0;
+        if ($this->session->userdata('email')) {
+            $login_act = 1;
+        } else {
+            redirect('welcome/login');
+        }
+        $data['login_act'] = $login_act;
+        $data['page'] = 'pembayaran';
+        $this->load->view('pembayaran', $data);
+    }
 }

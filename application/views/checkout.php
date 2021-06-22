@@ -146,7 +146,7 @@ if ($login_act == 0) {
     <div class="container" style="text-align:right;">
         <h4 style="margin-right:110px;">Total Pembayaran : Rp. 220.000</h4>
         <br>
-        <button class="btn btn-warning" style="margin-right:110px;">Buat Pemesanan</button>
+        <a href="<?= base_url('menu/pembayaran') ?>" class="btn btn-warning" style="margin-right:110px;">Buat Pemesanan</a>
     </div>
     <footer style="margin-top: 50px;">
     </footer>
