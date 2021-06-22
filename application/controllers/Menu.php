@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Menu extends CI_Controller
 {
-
     public function sayuran()
     {
         $login_act = 0;
@@ -74,21 +73,32 @@ class Menu extends CI_Controller
         }
         $data['login_act'] = $login_act;
         $data['page'] = 'keranjang';
-        $data['data_sayur'] = $this->db->get_where('master_menu', ['kategori' => 'sayur'])->result_array();
+        $data['data_sayur'] = $this->db->select('*')
+            ->from('user_keranjang uk')
+            ->join('master_menu menu', 'menu.id = uk.menu_id')
+            ->where('uk.user_id', $this->session->userdata('id'))
+            ->get()->result_array();
         $this->load->view('keranjang', $data);
     }
 
     public function checkout()
     {
         $login_act = 0;
+        $pasar_id = null;
         if ($this->session->userdata('email')) {
             $login_act = 1;
+            $pasar_id = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row()->pasar_id;
         } else {
             redirect('welcome/login');
         }
         $data['login_act'] = $login_act;
         $data['page'] = 'checkout';
-        $data['data_sayur'] = $this->db->get_where('master_menu', ['kategori' => 'sayur'])->result_array();
+        $data['data_sayur'] = $this->db->select('*')
+            ->from('user_keranjang uk')
+            ->join('master_menu menu', 'menu.id = uk.menu_id')
+            ->where('uk.user_id', $this->session->userdata('id'))
+            ->get()->result_array();
+        $data['pasar'] = $this->db->get_where('master_pasar', ['id' => $pasar_id])->row();
         $this->load->view('checkout', $data);
     }
 

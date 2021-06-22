@@ -95,6 +95,16 @@ class Welcome extends CI_Controller
 		$this->load->view('pilihan_pasar', $data);
 	}
 
+	function pilih_pasar($id)
+	{
+		if ($this->session->userdata('email')) {
+			$this->db->update('user', ['pasar_id' => $id], ['id' => $this->session->userdata('id')]);
+			redirect('welcome/');
+		} else {
+			redirect('welcome/login');
+		}
+	}
+
 	public function logout()
 	{
 		$this->session->unset_userdata('username');

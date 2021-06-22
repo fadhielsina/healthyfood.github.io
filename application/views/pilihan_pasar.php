@@ -46,7 +46,7 @@
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" style="width: 286px; height:180px;" src="<?= base_url('assets/img/') ?><?= $pasar['img'] ?>.jpg" alt="Card image cap">
                         <div class="card-body text-center">
-                            <a href="<?= $pasar['id'] ?>">
+                            <a href="<?= base_url('welcome/pilih_pasar/' . $pasar['id'] . '') ?>">
                                 <h5 class="card-title"><?= $pasar['nama_pasar'] ?></h5>
                             </a>
                             <p class="card-text"><?= $pasar['alamat'] ?></p>

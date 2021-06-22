@@ -38,10 +38,7 @@
 
 <?php $this->load->view('navbar', $page) ?>
 <?php
-$disabled = '';
-if ($login_act == 0) {
-    $disabled = 'disabled';
-}
+$disabled = 'disabled';
 ?>
 
 <body class="bg-light">
@@ -58,7 +55,11 @@ if ($login_act == 0) {
     </div>
     <hr>
     <div class="container">
-        <i class="fa fa-shopping-bag fa-lg"> Pasar Sarijadi , Jalan Sarijadi</i>
+        <?php if ($pasar) : ?>
+            <i class="fa fa-shopping-bag fa-lg"> <?= $pasar->nama_pasar ?> | <?= $pasar->alamat ?></i>
+        <?php else : ?>
+            <i class="fa fa-shopping-bag fa-lg"></i> <a href="<?= base_url('welcome/pilihan_pasar/') ?>" class="btn btn-info">Pilih Pasar</a>
+        <?php endif; ?>
     </div>
     <hr>
     <div class="container">
@@ -74,17 +75,20 @@ if ($login_act == 0) {
             <tbody>
                 <?php
                 $i = 1;
+                $total = 0;
                 foreach ($data_sayur as $sayur) : ?>
+                    <?php $subtotal = $sayur['qty'] * $sayur['harga']; ?>
                     <tr>
                         <th scope="row"><img style="width: 160px;height: 110px;" src="<?= base_url('assets/img/') ?><?= $sayur['img'] ?>.jpg" class="img-thumbnail" alt="..."> <?= $sayur['nama'] ?></th>
                         <td style="padding-top: 50px;">
                             <input type="hidden" name="harga_sayur[]" value="<?= $sayur['harga'] ?>">
                             <h4><?= number_format($sayur['harga']) ?>/Kg</h4>
                         </td>
-                        <td style="padding-top: 45px;"><input type="number" value="0" min="0" name="sayur[]" <?= $disabled ?> /></td>
-                        <td><input type="text" value="0" style="margin-top: 33px; width: 176px; font-weight:bold; font-size: 1.2rem;" class="form-control text-center" disabled name="total[]"></td>
+                        <td style="padding-top: 45px;"><input type="number" value="<?= $sayur['qty'] ?>" min="0" name="sayur[]" <?= $disabled ?> /></td>
+                        <td><input type="text" value="<?= number_format($subtotal) ?>" style="margin-top: 33px; width: 176px; font-weight:bold; font-size: 1.2rem;" class="form-control text-center" disabled name="total[]"></td>
                     </tr>
                 <?php $i++;
+                    $total += $subtotal;
                 endforeach; ?>
             </tbody>
         </table>
@@ -96,7 +100,7 @@ if ($login_act == 0) {
                 <h4>Total Pemesanan Produk :</h4>
             </div>
             <div class="col" style="margin-right: 120px;">
-                <h4 style="text-align:right;">Rp. 200.000</h4>
+                <h4 style="text-align:right;">Rp. <?= number_format($total) ?></h4>
             </div>
         </div>
     </div>
@@ -144,7 +148,7 @@ if ($login_act == 0) {
     </div>
     <hr>
     <div class="container" style="text-align:right;">
-        <h4 style="margin-right:110px;">Total Pembayaran : Rp. 220.000</h4>
+        <h4 style="margin-right:110px;">Total Pembayaran : <?= number_format($total + 20000) ?></h4>
         <br>
         <a href="<?= base_url('menu/pembayaran') ?>" class="btn btn-warning" style="margin-right:110px;">Buat Pemesanan</a>
     </div>
